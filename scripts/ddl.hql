@@ -1,23 +1,23 @@
-CREATE TABLE IF NOT EXISTS taxidata (
+CREATE TABLE IF NOT EXISTS yellow_taxi_2018 (
     vendor_id STRING,
     pickup_datetime STRING,
     dropoff_datetime STRING,
     passenger_count INT,
-    trip_distance DECIMAL(9,6),
-    pickup_longitude DECIMAL(9,6),
-    pickup_latitude DECIMAL(9,6),
+    trip_distance DOUBLE,
     rate_code INT,
     store_and_fwd_flag STRING,
-    dropoff_longitude DECIMAL(9,6),
-    dropoff_latitude DECIMAL(9,6),
-    payment_type STRING,
-    fare_amount DECIMAL(9,6),
-    extra DECIMAL(9,6),
-    mta_tax DECIMAL(9,6),
-    tip_amount DECIMAL(9,6),
-    tolls_amount DECIMAL(9,6),
-    total_amount DECIMAL(9,6),
-    trip_time_in_secs INT
+    pu_location_id INT,
+    do_location_id INT,
+    payment_type INT,
+    fare_amount DOUBLE,
+    extra DOUBLE,
+    mta_tax DOUBLE,
+    tip_amount DOUBLE,
+    tolls_amount DOUBLE,
+    improvement_surcharge DOUBLE,
+    total_amount DOUBLE,
+    congestion_surcharge DOUBLE,
+    airport_fee DOUBLE
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
