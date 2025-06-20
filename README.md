@@ -33,6 +33,7 @@ FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 TBLPROPERTIES ("skip.header.line.count"="1");
 ```
+**Output:**
 ```
 Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'.
 The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
@@ -48,7 +49,11 @@ This command loads the cleaned CSV file from HDFS into the created Hive table.
 LOAD DATA INPATH '/user/hive/warehouse/taxidata/yellow_jan2018.csv'
 INTO TABLE yellow_taxi_2018;
 ```
+**Output:**
 ```
 Loading data to table default.taxidata
 OK
+Time taken: 2.282 seconds
 ```
+
+
