@@ -9,7 +9,7 @@ The following steps show how the Hadoop daemons were started and how the CSV fil
 ```bash
 santhosh@santhosh-VirtualBox:~$ sudo service ssh start
 [sudo] password for santhosh:
-# (SSH service started)
+# (SSH service started) 
 
 santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ sbin/start-all.sh
 # This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
