@@ -309,6 +309,21 @@ OK
 2018-01-05 00:14:40	2018-01-05 04:59:17	252.1	730.32
 Time taken: 22.464 seconds, Fetched: 5 row(s)
 ```
+##📁 Folder Structure
 
+- dataset/
+  ├── parquet_to_csv.ipynb       # Conversion from Parquet to CSV
+  ├── dataset_link.txt           # Download link for large dataset
+- scripts/
+  ├── setup_hdfs.sh              # HDFS directory setup and file upload
+  ├── ddl.hql                    # Hive table creation
+  ├── load_data.hql              # Load CSV into Hive table
+  ├── Analysis_queries.hql       # Hive queries for analysis
+- README.md                      # Project walkthrough and results
 
+##📜 How to Run
+
+1. Start Hadoop and Hive (`setup_hdfs.sh`)
+2. Load data into HDFS and Hive (`load_data.hql`)
+3. Run the analysis (`Analysis_queries.hql`)
 
