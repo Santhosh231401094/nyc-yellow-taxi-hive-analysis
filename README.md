@@ -1,6 +1,20 @@
 # 🚕 NYC Yellow Taxi Hive Analysis
 
 This project analyzes the **2018 Yellow Taxi Trip Data** using Hive, focusing on trip counts, revenue, tips, and patterns in pickup locations and trip hours.
+## 📄 Step 0: Convert Parquet to CSV using Python
+
+The original Yellow Taxi Trip data was available in Parquet format.  
+To make it compatible with Hive (TEXTFILE format), the file was converted to CSV using the following Python code:
+
+```python
+import pandas as pd
+
+# Load the Parquet file
+df = pd.read_parquet("yellow_tripdata_2018-01.parquet")
+
+# Save it as CSV
+df.to_csv("yellow_jan2018.csv", index=False)
+```
 
 ## Running Hadoop Commands (Linux Terminal)
 
