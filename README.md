@@ -32,6 +32,7 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 TBLPROPERTIES ("skip.header.line.count"="1");
+```
 
 ## 📥 Step 2: Load Data into Hive Table
 
@@ -40,3 +41,4 @@ This command loads the cleaned CSV file from HDFS into the created Hive table.
 ```sql
 LOAD DATA INPATH '/user/hive/warehouse/taxidata/yellow_jan2018.csv'
 INTO TABLE yellow_taxi_2018;
+```
