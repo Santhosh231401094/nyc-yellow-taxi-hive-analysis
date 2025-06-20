@@ -2,6 +2,38 @@
 
 This project analyzes the **2018 Yellow Taxi Trip Data** using Hive, focusing on trip counts, revenue, tips, and patterns in pickup locations and trip hours.
 
+## Running Hadoop commands(Linux Terminal)
+
+The following steps show how the Hadoop daemons were started and the data was uploaded to HDFS.
+
+```bash
+# Start the SSH service (required for Hadoop)
+sudo service ssh start
+
+# Start all Hadoop daemons
+sbin/start-all.sh
+
+# If the above is deprecated, use:
+start-dfs.sh
+start-yarn.sh
+
+# Check running Hadoop processes
+jps
+
+# Output might look like this:
+# 7105 DataNode
+# 6966 NameNode
+# 7339 SecondaryNameNode
+# 7485 ResourceManager
+# 7614 NodeManager
+
+# Create a directory in HDFS for Hive warehouse data
+hdfs dfs -mkdir -p /user/hive/warehouse/taxidata
+
+# Upload the CSV dataset to HDFS
+hdfs dfs -put /home/santhosh/Downloads/yellow_jan2018.csv /user/hive/warehouse/taxidata/yellow_jan2018.csv
+
+```
 ---
 
 ## 🧱 Step 1: Create Hive Table
