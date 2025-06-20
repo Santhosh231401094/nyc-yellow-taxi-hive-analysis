@@ -55,5 +55,209 @@ Loading data to table default.taxidata
 OK
 Time taken: 2.282 seconds
 ```
+## Query 1: Total Number of Trips
+
+Counts the total number of taxi trips in the dataset.
+
+```sql
+SELECT COUNT(*) AS total_trips
+FROM yellow_taxi_2018;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 15642363903 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+8760687
+Time taken: 8.891 seconds, Fetched: 1 row(s)
+```
+## Query 2: Total Revenue Generated
+
+Calculates the total revenue by summing the total_amount.
+
+```sql
+SELECT ROUND(SUM(total_amount), 2) AS total_revenue
+FROM yellow_taxi_2018;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 11515507228 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+1.3571257618E8
+Time taken: 20.529 seconds, Fetched: 1 row(s)
+```
+## Query 3: Top 5 Trips with Highest Tips
+
+Shows the top 5 highest tips given.
+
+```sql
+SELECT tip_amount
+FROM yellow_taxi_2018
+ORDER BY tip_amount DESC
+LIMIT 5;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 19769220578 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+441.71
+415.0
+411.0
+355.0
+330.0
+Time taken: 14.437 seconds, Fetched: 5 row(s)
+```
+## Query 4: Count of Trips per Payment Type
+
+Groups trips by payment method and counts how many used each.
+
+```sql
+SELECT payment_type, COUNT(*) AS total_trips
+FROM yellow_taxi_2018
+GROUP BY payment_type
+ORDER BY total_trips DESC;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 38752994875 HDFS Write: 0 SUCCESS
+Stage-Stage-2:  HDFS Read: 9904611748 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+1	6106416
+2	2599215
+3	43204
+4	11852
+Time taken: 10.858 seconds, Fetched: 4 row(s)
+```
+## Query 5: Average Fare, Tip, and Total Amount
+
+Calculates average fare, tip, and total amount across all trips.
+
+```sql
+SELECT
+  ROUND(AVG(fare_amount), 2) AS avg_fare,
+  ROUND(AVG(tip_amount), 2) AS avg_tip,
+  ROUND(AVG(total_amount), 2) AS avg_total
+FROM yellow_taxi_2018;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 28022933928 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+12.24	1.82	15.49
+Time taken: 25.9 seconds, Fetched: 1 row(s)
+```
+## Query 6: Top 10 Pickup Locations
+
+Finds the most frequently used pickup locations by ID.
+
+```sql
+SELECT pu_location_id, COUNT(*) AS pickups
+FROM yellow_taxi_2018
+GROUP BY pu_location_id
+ORDER BY pickups DESC
+LIMIT 10;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 51958936235 HDFS Write: 0 SUCCESS
+Stage-Stage-2:  HDFS Read: 13206097088 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+237	361012
+161	354958
+236	345712
+230	309228
+162	308339
+186	292545
+234	283990
+170	277931
+48	270624
+142	264095
+Time taken: 13.18 seconds, Fetched: 10 row(s)
+```
+## Query 7: Number of Trips Per Hour
+
+Groups trips by the hour of pickup time.
+
+```sql
+SELECT HOUR(CAST(pickup_datetime AS TIMESTAMP)) AS hour, COUNT(*) AS trips
+FROM yellow_taxi_2018
+GROUP BY HOUR(CAST(pickup_datetime AS TIMESTAMP))
+ORDER BY hour;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 58561906915 HDFS Write: 0 SUCCESS
+Stage-Stage-2:  HDFS Read: 14856839758 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+0	259334
+1	188672
+2	142090
+3	102601
+4	79365
+5	86223
+6	197014
+7	335675
+8	418318
+9	420067
+10	405854
+11	418606
+12	447121
+13	449522
+14	479274
+15	490804
+16	464027
+17	517867
+18	575667
+19	543264
+20	481705
+21	475154
+22	439513
+23	342950
+```
+## Query 8: Top 5 Longest Trips by Distance
+
+Finds 5 trips with the longest distances.
+
+```sql
+SELECT pickup_datetime, dropoff_datetime, trip_distance, total_amount
+FROM yellow_taxi_2018
+ORDER BY trip_distance DESC
+LIMIT 5;
+```
+
+**Output:**
+```
+MapReduce Jobs Launched: 
+Stage-Stage-1:  HDFS Read: 40403503953 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 0 msec
+OK
+2018-01-30 11:41:02	2018-01-30 11:42:09	189483.84	4.0
+2018-01-08 19:44:54	2018-01-08 19:50:00	830.8	9.1
+2018-01-12 17:36:09	2018-01-13 04:50:42	484.91	2417.81
+2018-01-06 22:28:49	2018-01-07 03:37:28	267.7	950.3
+2018-01-05 00:14:40	2018-01-05 04:59:17	252.1	730.32
+Time taken: 22.464 seconds, Fetched: 5 row(s)
+```
+
 
 
