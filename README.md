@@ -1,6 +1,6 @@
 # nyc-yellow-taxi-hive-analysis
 
-'''sql
+```sql
 CREATE TABLE IF NOT EXISTS yellow_taxi_2018 (
     vendor_id STRING,
     pickup_datetime STRING,
