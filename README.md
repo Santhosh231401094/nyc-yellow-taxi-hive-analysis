@@ -2,36 +2,41 @@
 
 This project analyzes the **2018 Yellow Taxi Trip Data** using Hive, focusing on trip counts, revenue, tips, and patterns in pickup locations and trip hours.
 
-## Running Hadoop commands(Linux Terminal)
+## Running Hadoop Commands (Linux Terminal)
 
-The following steps show how the Hadoop daemons were started and the data was uploaded to HDFS.
+The following steps show how the Hadoop daemons were started and how the CSV file was uploaded to HDFS.
 
 ```bash
-# Start the SSH service (required for Hadoop)
-sudo service ssh start
+santhosh@santhosh-VirtualBox:~$ sudo service ssh start
+[sudo] password for santhosh:
+# (SSH service started)
 
-# Start all Hadoop daemons
-sbin/start-all.sh
+santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ sbin/start-all.sh
+# This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+# Starting namenodes on [localhost]
+# localhost: namenode running as process 6966. Stop it first.
+# localhost: datanode running as process 7105. Stop it first.
+# Starting secondary namenodes [0.0.0.0]
+# 0.0.0.0: secondarynamenode running as process 7339. Stop it first.
+# starting yarn daemons
+# resourcemanager running as process 7485. Stop it first.
+# localhost: nodemanager running as process 7614. Stop it first.
 
-# If the above is deprecated, use:
-start-dfs.sh
-start-yarn.sh
+# (Or use this recommended way if above is deprecated:)
+# santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ start-dfs.sh
+# santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ start-yarn.sh
 
-# Check running Hadoop processes
-jps
-
-# Output might look like this:
+santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ jps
 # 7105 DataNode
 # 6966 NameNode
 # 7339 SecondaryNameNode
 # 7485 ResourceManager
 # 7614 NodeManager
 
-# Create a directory in HDFS for Hive warehouse data
-hdfs dfs -mkdir -p /user/hive/warehouse/taxidata
+santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ hdfs dfs -mkdir -p /user/hive/warehouse/taxidata
 
-# Upload the CSV dataset to HDFS
-hdfs dfs -put /home/santhosh/Downloads/yellow_jan2018.csv /user/hive/warehouse/taxidata/yellow_jan2018.csv
+santhosh@santhosh-VirtualBox:~/Downloads/hadoop-2.9.1$ hdfs dfs -put /home/santhosh/Downloads/yellow_jan2018.csv /user/hive/warehouse/taxidata/yellow_jan2018.csv
+
 
 ```
 ---
