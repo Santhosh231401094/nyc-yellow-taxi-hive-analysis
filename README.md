@@ -51,9 +51,9 @@ INTO TABLE yellow_taxi_2018;
 ```
 **Output:**
 ```
-Loading data to table default.taxidata
+Loading data to table default.yellow_taxi_2018
 OK
-Time taken: 2.282 seconds
+Time taken: 1.655 seconds
 ```
 ## Query 1: Total Number of Trips
 
