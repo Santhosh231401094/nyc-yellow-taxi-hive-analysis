@@ -1,6 +1,6 @@
 # 🚕 NYC Yellow Taxi Hive Analysis
 
-![Uploading - dataset ├── parquet_to_csv.ipynb # Conversion from Parquet to CSV ├── dataset_link.txt # Download link for large dataset - scripts ├── setup_hdfs.sh # HDFS directory setup and file upload ├── dd.png…]()
+
 
 
 
