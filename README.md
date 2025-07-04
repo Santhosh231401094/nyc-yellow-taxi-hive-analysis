@@ -1,5 +1,7 @@
 # 🚕 NYC Yellow Taxi Hive Analysis
 
+![Uploading - dataset ├── parquet_to_csv.ipynb # Conversion from Parquet to CSV ├── dataset_link.txt # Download link for large dataset - scripts ├── setup_hdfs.sh # HDFS directory setup and file upload ├── dd.png…]()
+
 This project analyzes the **2018 Yellow Taxi Trip Data** using Hive, focusing on trip counts, revenue, tips, and patterns in pickup locations and trip hours.
 ## 📄 Step 0: Convert Parquet to CSV using Python
 
